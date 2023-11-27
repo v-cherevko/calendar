@@ -1,0 +1,314 @@
+.calendar-modal {
+    position: absolute;
+    z-index: 9000;
+    width: 25rem;
+    background-color: #FFFFFF;
+    border-radius: 0.2rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 1023.98px) {
+    .calendar-modal {
+        width: 19rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .calendar-modal {
+        width: 100%;
+    }
+}
+
+.calendar-modal__position_left {
+    top: -1.75rem;
+    right: 11.25rem;
+}
+
+@media (max-width: 1023.98px) {
+    .calendar-modal__position_left {
+        right: 7.25rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .calendar-modal__position_left {
+        top: 0;
+        right: 0;
+    }
+}
+
+.calendar-modal__position_right {
+    top: -1.75rem;
+    left: 11.25rem;
+}
+
+@media (max-width: 1023.98px) {
+    .calendar-modal__position_right {
+        left: 7.25rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .calendar-modal__position_right {
+        top: 0;
+        left: 0;
+    }
+}
+
+.calendar-modal__position_header {
+    top: 2.75rem;
+    left: 0;
+}
+
+@media (max-width: 767.98px) {
+    .calendar-modal__position_header {
+        width: 100%;
+        top: 2.3rem;
+    }
+}
+
+.calendar-modal__position_header .calendar-modal__close-button {
+    top: 0.35rem;
+}
+
+.calendar-modal__position_search {
+    top: 2.75rem;
+    left: 1.65rem;
+    width: 15rem;
+}
+
+@media (max-width: 767.98px) {
+    .calendar-modal__position_search {
+        left: 0;
+        width: 100%;
+    }
+}
+
+.calendar-modal__wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+}
+
+@media (max-width: 1023.98px) {
+    .calendar-modal__wrapper {
+        padding: 2rem 1rem;
+    }
+}
+
+.calendar-modal__wrapper_search {
+    padding: 0.25rem;
+}
+
+.calendar-modal__triangle {
+    position: absolute;
+    z-index: 9001;
+    width: 1rem;
+    height: 1rem;
+    background-color: #FFFFFF;
+    transform: rotate(45deg);
+}
+
+.calendar-modal__triangle_left {
+    top: 2.25rem;
+    left: -0.5rem;
+    box-shadow: -0.188rem 0.188rem 0.25rem -0.125rem rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 767.98px) {
+    .calendar-modal__triangle_left {
+        display: none;
+    }
+}
+
+.calendar-modal__triangle_right {
+    top: 2.25rem;
+    right: -0.5rem;
+    box-shadow: 0.188rem -0.188rem 0.25rem -0.125rem rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 767.98px) {
+    .calendar-modal__triangle_right {
+        display: none;
+    }
+}
+
+.calendar-modal__triangle_header {
+    top: -0.5rem;
+    left: 1.25rem;
+    box-shadow: -0.188rem -0.188rem 0.25rem -0.125rem rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 767.98px) {
+    .calendar-modal__triangle_header {
+        left: 2rem;
+    }
+}
+
+.calendar-modal__close-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: flex;
+    padding: 0;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+.calendar-modal__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-modal__form-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+.calendar-modal__form-date {
+    margin: 0.5rem 0 1rem;
+}
+
+.calendar-modal__form-text {
+    font-size: 1.15rem;
+    color: #000000;
+}
+
+.calendar-modal__form-subtext {
+    margin-bottom: -0.35rem;
+    font-size: 0.75rem;
+}
+
+.calendar-modal__input {
+    width: 100%;
+    margin: 0 0 0.25rem;
+    padding: 0.25rem 0.5rem;
+    outline: none;
+    background: #FFFFFF;
+    border: 1px solid #E3E3E3;
+    border-radius: 0.2rem;
+    box-shadow: inset 0 0.1rem rgba(0, 0, 0, 0.2);
+    font-size: 0.875rem;
+}
+
+.calendar-modal__input::placeholder {
+    color: #E2E2E2;
+}
+
+.calendar-modal__input_error {
+    border-color: rgb(255, 106, 106);
+    box-shadow: inset 0 0.1rem rgba(255, 140, 140, 0.2);
+}
+
+.calendar-modal__textarea {
+    height: 7rem;
+    margin: 1.5rem 0;
+    resize: none;
+}
+
+.calendar-modal__text-error {
+    font-size: 0.65rem;
+    color: #E57373;
+}
+
+@property --myColor1 {
+    syntax: '<color>';
+    initial-value: #FFFFFF;
+    inherits: false;
+  }
+  
+@property --myColor2 {
+    syntax: '<color>';
+    initial-value: #F4F4F4;
+    inherits: false;
+}
+
+.calendar-modal__button {
+    padding: 0 0.5rem;
+    outline: none;
+    border: 1px solid #E3E3E3;
+    border-radius: 0.2rem;
+    background: linear-gradient(var(--myColor1), var(--myColor2));
+    background-size: 50% 100%;
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: #3C4039;
+    transition: --myColor1 0.3s ease;
+}
+
+.calendar-modal__button:active {
+    --myColor1: #F4F4F4;
+}
+
+.calendar-modal__button:nth-child(2) {
+    margin: 0 0 0 0.5rem;
+}
+
+.calendar-modal__search {
+    position: relative;
+    z-index: 9002;
+    overflow: auto;
+    max-height: 23.5rem;
+    padding-right: 0.25rem;
+}
+
+.calendar-modal__search::-webkit-scrollbar {
+    width: 0.8rem;
+}
+
+.calendar-modal__search::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0.25rem 0.25rem #FFFFFF;
+    border: solid 0.188rem transparent;
+}
+
+.calendar-modal__search::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 0.25rem 0.25rem #7A7A7A;
+    border: solid 0.188rem transparent;
+    border-radius: 1rem;
+}
+
+.calendar-modal__search-item {
+    overflow: hidden;
+    position: relative;
+    padding: 0.25rem;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.calendar-modal__search-item:nth-child(n + 3) {
+    border-top: 1px solid #EEEEEE;
+}
+
+.calendar-modal__search-item:hover {
+    background-color: #26A1FF;
+    color: #FFFFFF;
+}
+
+.calendar-modal__search-item:hover .calendar-modal__search-item-blur {
+    background-color: #26A1FF;
+}
+
+.calendar-modal__search-item-title {
+    margin-bottom: -0.25rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.calendar-modal__search-item-date {
+    font-size: 0.75rem;
+}
+
+.calendar-modal__search-item-blur {
+    position: absolute;
+    top: 0;
+    right: -1rem; 
+    width: 2rem;
+    height: 100%;
+    background-color: #FFFFFF;
+    filter: blur(0.25rem);
+    transition: background-color 0.2s ease;
+}

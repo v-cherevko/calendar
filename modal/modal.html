@@ -1,0 +1,106 @@
+<template>
+    <div class={getCalendarClass}>
+        <div class={getCalendarWrapperClass}>
+            <template lwc:if={showCloseButton}>
+                <button class="calendar-modal__close-button" onclick={handleCloseModal}>
+                    <lightning-icon
+                        class="calendar-modal__close-icon" 
+                        icon-name="utility:close"
+                        size="xx-small"
+                        alternative-text="utility:close"
+                    ></lightning-icon>
+                </button>
+            </template>
+
+            <div class={getTriangleClass}></div>
+
+            <template lwc:if={isCreateEventCalendar}>
+                <div class="calendar-modal__form">
+                    <template lwc:if={date.event}>
+                        <h3 class="calendar-modal__form-title">{date.event.eventText}</h3>
+                        <p class="calendar-modal__form-text calendar-modal__form-date">{date.event.eventDateText}</p>
+
+                        <template lwc:if={date.event.participantNames}>
+                            <span class="calendar-modal__form-subtext">Участники:</span>
+                            <p class="calendar-modal__form-text">{date.event.participantNames}</p>
+                        </template>
+                    </template>
+
+                    <template lwc:else>
+                        <input 
+                            class={getCalendarEventInputClass}
+                            type="text" 
+                            placeholder="Событие"
+                            name="eventText"
+                            autocomplete="false"
+                            onchange={handleChange}
+                        >
+                        <input 
+                            class="calendar-modal__input"
+                            type="text" 
+                            placeholder="День, месяц, год"
+                            value={eventDate}
+                            name="eventDate"
+                            autocomplete="false"
+                            disabled
+                            onchange={handleChange}
+                        >
+                        <input 
+                            class="calendar-modal__input"
+                            type="text" 
+                            placeholder="Имена участников"
+                            name="participantNames"
+                            autocomplete="false"
+                            onchange={handleChange}
+                        >
+                    </template>
+
+                    <textarea 
+                        class="calendar-modal__input calendar-modal__textarea"
+                        placeholder="Описание"
+                        name="eventDescription"
+                        onchange={handleChange}
+                    >{eventDescription}</textarea>
+
+                    <div>
+                        <button class="calendar-modal__button" onclick={handleCreateEvent}>Готово</button>
+                        <button class="calendar-modal__button" onclick={handleDeleteEvent}>Удалить</button>
+                    </div>
+                </div>
+            </template>
+
+            <template lwc:elseif={isCreateEventHeader}>
+                <input 
+                    class={getCalendarEventHeaderInputClass}
+                    type="text" 
+                    placeholder="5 марта, 14:00, День рождение"
+                    name="eventHeaderText"
+                    autocomplete="false"
+                    oninput={handleChange}
+                >
+
+                <template lwc:if={hasEventOnThisDateError}>
+                    <p class="calendar-modal__text-error">Событие на эту дату уже существует!</p>
+                </template>
+
+                <button class="calendar-modal__button" onclick={handleCreateEventHeader}>Создать</button>
+            </template>
+
+            <template lwc:elseif={isSearchEventHeader}>
+                <div class="calendar-modal__search">
+                    <template lwc:if={duplicateCalendarEvents.length} for:each={duplicateCalendarEvents} for:item="calendarEvent">
+                        <div class="calendar-modal__search-item" key={calendarEvent.key} data-id={calendarEvent.id} onclick={handleSelectSearchEventItem}>
+                            <p class="calendar-modal__search-item-title">{calendarEvent.event.eventText}</p>
+                            <span class="calendar-modal__search-item-date">{calendarEvent.event.eventDateText}</span>
+                            <div class="calendar-modal__search-item-blur"></div>
+                        </div>
+                    </template>
+
+                    <template lwc:else>
+                        не найдено
+                    </template>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

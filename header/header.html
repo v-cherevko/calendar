@@ -1,0 +1,50 @@
+<template>
+    <header class="calendar-header">
+        <div class="calendar-header__buttons">
+            <button class="calendar-header__button" onclick={openModal}>Добавить</button>
+
+            <c-modal 
+                lwc:if={showCreateEventModal}
+                type="createEventHeader"
+                onclosemodal={handleCloseHeaderModal}
+            ></c-modal>
+
+            <button class="calendar-header__button">Обновить</button>
+        </div>
+
+        <div class="calendar-header__search">
+            <lightning-icon
+                class="calendar-header__search-icon" 
+                icon-name="utility:search"
+                size="x-small"
+                alternative-text="utility:search"
+            ></lightning-icon>
+
+            <input
+                class="calendar-header__search-input"
+                type="text"
+                placeholder="Событие, дата или участник"
+                value={textSearch}
+                oninput={handleSearchEvent}
+            >
+
+            <template lwc:if={showClearButton}>
+                <lightning-icon
+                    class="calendar-header__search-input-icon" 
+                    icon-name="utility:close"
+                    size="xx-small"
+                    alternative-text="utility:close"
+                    onclick={handleCloseSearchEventModal}
+                ></lightning-icon>
+            </template>
+
+            <c-modal 
+                lwc:if={showSearchEventModal}
+                type="searchEventHeader"
+                close="disable"
+                search="true"
+                onclosemodal={handleCloseSearchEventModal}
+            ></c-modal>
+        </div>
+    </header>
+</template>

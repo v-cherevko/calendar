@@ -1,0 +1,53 @@
+<template>
+    <div class="calendar-container">
+        <div class="calendar-container__header">
+            <button class="calendar-container__header-button" onclick={handleClickButtonPrev}>
+                <lightning-icon
+                    class="calendar-container__header-button-icon" 
+                    icon-name="utility:left"
+                    size="xx-small"
+                    alternative-text="utility:left"
+                ></lightning-icon>
+            </button>
+
+            <p class="calendar-container__header-selected-date">{selectedDate}</p>
+
+            <button class="calendar-container__header-button" onclick={handleClickButtonNext}>
+                <lightning-icon
+                    class="calendar-container__header-button-icon" 
+                    icon-name="utility:right"
+                    size="xx-small"
+                    alternative-text="utility:right"
+                ></lightning-icon>
+            </button>
+
+            <button class="calendar-container__header-button" onclick={handleClickButtonToday}>Сегодня</button>
+        </div>
+
+        <div class="calendar-container__items">
+            <template lwc:if={dates.length} for:each={dates} for:item="date">
+                <div class={date.class} key={date.key} data-id={date.id} data-day={date.day} onclick={handleClickSelectedItem}>
+                    <template lwc:if={date.dayOfWeek}>
+                        <span>{date.dayOfWeek}, </span>
+                    </template>
+
+                    <span>{date.day}</span>
+
+                    <template lwc:if={date.event}>
+                        <p class="calendar-container__item-text">{date.event.eventText}</p>
+                        <p class="calendar-container__item-text">{date.event.participantNames}</p>
+                    </template>
+
+                    <c-modal 
+                        lwc:if={date.selected}
+                        date={date}
+                        type="createEventCalendar"
+                        onclosemodal={handleCloseModal}
+                        oncreatecalendarevent={handleCreateCalendarEvent}
+                        ondeletecalendarevent={handleDeleteCalendarEvent}
+                    ></c-modal>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>
