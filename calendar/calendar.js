@@ -4,7 +4,7 @@ import { registerListener, unregisterAllListeners, fireEvent } from 'c/pubsub'
 
 const DAYS_OF_WEEK = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
 
-const SHORT_DAYS_OF_WEEK = ['Пн', 'Вт', 'Ср', 'Чтв', 'Птн', 'Суб', 'Вск']
+const SHORT_DAYS_OF_WEEK = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
 
 const MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
 
